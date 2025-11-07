@@ -10,9 +10,9 @@ Professional, responsive portfolio site showcasing projects, technical experienc
 
 If deployed to GitHub Pages the site will be available at:
 
-`https://<github-username>.github.io/joseph-musembi-portfolio/`
+`https://Joseph-the-Engineer.github.io/joseph-musembi-portfolio/`
 
-Replace `<github-username>` with your GitHub username when you configure the repository.
+Replace `Joseph-the-Engineer` with your GitHub username when you configure the repository.
 
 ## Key features
 
