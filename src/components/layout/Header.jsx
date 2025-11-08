@@ -37,7 +37,7 @@ const Header = ({ sections, activeSection, theme, toggleTheme }) => {
           animate={{ opacity: 1 }}
           className="flex items-center text-xl font-bold text-gray-900 dark:text-white tracking-wider"
         >
-          <img src={headerLogo} alt="Profile" className="w-8 h-8 rounded-full mr-3 object-cover" />
+          <img src={headerLogo} alt="Joseph Musembi" width={32} height={32} className="w-8 h-8 rounded-full mr-3 object-cover" />
           <span className="bg-gradient-to-r from-primary-500 to-secondary-500 text-transparent bg-clip-text">
             JOSEPH MUSEMBI
           </span>

@@ -1,3 +1,31 @@
+# Joseph Musembi — Portfolio
+
+This repository contains a React + Vite portfolio site. The project includes improvements for performance, accessibility, and CI.
+
+Local development
+
+```bash
+npm install
+npm run dev
+```
+
+Build and preview
+
+```bash
+npm run build
+npm run preview
+```
+
+Lint & format
+
+```bash
+npm run lint
+npm run format
+```
+
+CI
+
+On push to `main` a GitHub Actions workflow will run lint, tests and a production build and deploy to GitHub Pages.
 # joseph-musembi-portfolio
 
 Joseph Musembi — Software Engineer portfolio (React, Tailwind, Vite)

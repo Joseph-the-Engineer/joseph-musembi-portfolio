@@ -45,11 +45,20 @@ const About = ({ id }) => {
             className="relative"
           >
             <div className="aspect-square overflow-hidden rounded-2xl shadow-2xl">
-              <img
-                src={profileSrc}
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
+                {/* Use <picture> for future responsive images and add loading/decoding to improve layout & perf */}
+                <picture>
+                  {/* WebP will be used when available (add .webp at build-time or via image pipeline) */}
+                  <source srcSet={profileSrc.replace(/\.jpg$/, '.webp')} type="image/webp" />
+                  <img
+                    src={profileSrc}
+                    alt="Joseph Musembi — Full Stack Developer"
+                    width={800}
+                    height={800}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                </picture>
             </div>
             <div className="absolute -bottom-6 -right-6 bg-indigo-600 text-white p-6 rounded-2xl shadow-lg">
               <p className="text-lg font-semibold">5+ Years Experience</p>
