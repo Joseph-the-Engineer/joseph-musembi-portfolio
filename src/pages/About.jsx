@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../components/common/Button';
 
+// Resolve public asset path with Vite so base path is handled (works in dev and production)
+const profileSrc = new URL('/images/profile.jpg', import.meta.url).href;
+
 const About = ({ id }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -43,7 +46,7 @@ const About = ({ id }) => {
           >
             <div className="aspect-square overflow-hidden rounded-2xl shadow-2xl">
               <img
-                src="/images/profile.jpg"
+                src={profileSrc}
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
