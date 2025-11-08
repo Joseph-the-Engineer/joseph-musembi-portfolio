@@ -2,6 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeContext } from '../../App.jsx';
 
+// Resolve profile image for header/logo
+const headerLogo = new URL('/images/profile.jpg', import.meta.url).href;
+
 const Header = ({ sections, activeSection, theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,8 +35,9 @@ const Header = ({ sections, activeSection, theme, toggleTheme }) => {
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-xl font-bold text-gray-900 dark:text-white tracking-wider"
+          className="flex items-center text-xl font-bold text-gray-900 dark:text-white tracking-wider"
         >
+          <img src={headerLogo} alt="Profile" className="w-8 h-8 rounded-full mr-3 object-cover" />
           <span className="bg-gradient-to-r from-primary-500 to-secondary-500 text-transparent bg-clip-text">
             JOSEPH MUSEMBI
           </span>
