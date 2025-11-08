@@ -56,6 +56,9 @@ const About = ({ id }) => {
                     height={800}
                     loading="lazy"
                     decoding="async"
+                    // fallback: if the image fails to load (e.g., built asset path issues),
+                    // replace it with the BASE_URL-resolved profile image
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = profileSrc; }}
                     className="w-full h-full object-cover"
                   />
                 </picture>
