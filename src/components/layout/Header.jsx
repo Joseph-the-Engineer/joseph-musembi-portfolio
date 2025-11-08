@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeContext } from '../../App.jsx';
 
-// Resolve profile image for header/logo
-const headerLogo = new URL('/images/profile.jpg', import.meta.url).href;
+// Resolve profile image for header/logo using Vite base URL (works in dev and prod)
+const headerLogo = `${import.meta.env.BASE_URL}images/profile.jpg`;
 
 const Header = ({ sections, activeSection, theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);

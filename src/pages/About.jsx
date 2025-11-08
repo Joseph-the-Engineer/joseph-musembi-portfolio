@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../components/common/Button';
 
-// Resolve public asset path with Vite so base path is handled (works in dev and production)
-const profileSrc = new URL('/images/profile.jpg', import.meta.url).href;
+// Resolve public asset path with Vite base URL (works in dev and production)
+const profileSrc = `${import.meta.env.BASE_URL}images/profile.jpg`;
 
 const About = ({ id }) => {
   const containerVariants = {
