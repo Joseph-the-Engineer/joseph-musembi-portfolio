@@ -12,6 +12,15 @@
   }
 }
 
+/* Skip link visibility utilities */
+.skip-link {
+  transform: translateY(-10px);
+  transition: transform 150ms ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 @layer components {
   .section {
     @apply py-20;

@@ -45,7 +45,7 @@ const Header = ({ sections, activeSection, theme, toggleTheme }) => {
         
         {/* Navigation Links */}
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav aria-label="Primary" className="hidden md:flex items-center space-x-6">
           {sections.map(sectionId => (
             <motion.a 
               key={sectionId}
@@ -55,6 +55,7 @@ const Header = ({ sections, activeSection, theme, toggleTheme }) => {
                   ? 'text-primary-600 dark:text-primary-400' 
                   : 'text-gray-600 dark:text-gray-300'
               }`}
+              aria-current={activeSection === sectionId ? 'page' : undefined}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -101,6 +102,8 @@ const Header = ({ sections, activeSection, theme, toggleTheme }) => {
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <svg 
               xmlns="http://www.w3.org/2000/svg" 

@@ -147,6 +147,8 @@ function App() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 2 }}
           className="pt-20"
+          role="main"
+          id="main"
         >
           {/* About Section (Hero) */}
           <Section id="about" fullHeight gradient>
