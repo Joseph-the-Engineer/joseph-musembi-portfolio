@@ -2,9 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../components/common/Button';
 
-// Resolve public asset path with Vite base URL (works in dev and production)
-const profileSrc = `${import.meta.env.BASE_URL}images/profile.jpg`;
-
+// Image is in the /public/images/ folder
+const profileSrc = '/images/profile.jpg';
 const About = ({ id }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -45,23 +44,15 @@ const About = ({ id }) => {
             className="relative"
           >
             <div className="aspect-square overflow-hidden rounded-2xl shadow-2xl">
-                {/* Use <picture> for future responsive images and add loading/decoding to improve layout & perf */}
-                <picture>
-                  {/* WebP will be used when available (add .webp at build-time or via image pipeline) */}
-                  <source srcSet={profileSrc.replace(/\.jpg$/, '.webp')} type="image/webp" />
-                  <img
-                    src={profileSrc}
-                    alt="Joseph Musembi — Full Stack Developer"
-                    width={800}
-                    height={800}
-                    loading="lazy"
-                    decoding="async"
-                    // fallback: if the image fails to load (e.g., built asset path issues),
-                    // replace it with the BASE_URL-resolved profile image
-                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = profileSrc; }}
-                    className="w-full h-full object-cover"
-                  />
-                </picture>
+              <img
+                src={profileSrc}
+                alt="Joseph Musembi — Full Stack Developer"
+                width={800}
+                height={800}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-indigo-600 text-white p-6 rounded-2xl shadow-lg">
               <p className="text-lg font-semibold">5+ Years Experience</p>
