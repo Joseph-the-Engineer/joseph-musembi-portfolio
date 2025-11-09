@@ -1,136 +1,119 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import Badge from '../components/common/Badge';
+import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+// 1. Import the dedicated ProjectCard component (with multi-image carousel)
+import ProjectCard from '../components/ProjectCard'; 
+import Button from '../components/common/Button'; // Assuming you have a reusable Button component
 
 const Projects = ({ id, data }) => {
   const [filter, setFilter] = useState('all');
+
+  // 2. Dynamically extract all unique categories from the project data
+  const categories = useMemo(() => {
+    // Ensure data exists and is an array before reducing
+    if (!data || !Array.isArray(data)) return []; 
+    
+    const uniqueCategories = data.reduce((acc, project) => {
+      if (project.category && !acc.includes(project.category)) {
+        acc.push(project.category);
+      }
+      return acc;
+    }, []);
+    return uniqueCategories;
+  }, [data]); // Recalculate only if data prop changes
+
+  // Filter the projects based on the selected category
+  const filteredProjects = data.filter(project => 
+    filter === 'all' || project.category === filter
+  );
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2 }
+      transition: { staggerChildren: 0.1 } // Faster stagger for cleaner grid reveal
     }
   };
 
   const cardVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 100,
-        damping: 20
+        stiffness: 120, // Slightly tighter spring
+        damping: 15
       }
     }
   };
 
-  const filteredProjects = data.filter(project => 
-    filter === 'all' || project.category === filter
-  );
-
   return (
-    <section id={id} className="py-20 bg-gray-50">
+    <section id={id} className="py-24 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="space-y-12"
+          className="space-y-16"
         >
           <div className="text-center">
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-4">Featured Projects</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-              A showcase of my best work and technical capabilities
+            <h2 className="text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+              Featured Projects 💡
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+              A selection of my most impactful and innovative work, spanning multiple technologies and domains.
             </p>
             
-            {/* Filter Buttons */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <button
+            {/* 3. Dynamic and Aesthetically Improved Filter Buttons */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              <Button
                 onClick={() => setFilter('all')}
-                className={`px-4 py-2 rounded-full transition-all ${
-                  filter === 'all'
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-white text-gray-600 hover:bg-indigo-50'
-                }`}
+                variant={filter === 'all' ? 'primary' : 'tertiary'}
+                size="sm"
               >
                 All Projects
-              </button>
-              {['Frontend', 'Backend', 'Full Stack', 'Mobile'].map((category) => (
-                <button
+              </Button>
+              
+              {categories.map((category) => (
+                <Button
                   key={category}
                   onClick={() => setFilter(category)}
-                  className={`px-4 py-2 rounded-full transition-all ${
-                    filter === category
-                      ? 'bg-indigo-600 text-white'
-                      : 'bg-white text-gray-600 hover:bg-indigo-50'
-                  }`}
+                  variant={filter === category ? 'primary' : 'tertiary'}
+                  size="sm"
                 >
                   {category}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
 
           {data.length === 0 ? (
-            <p className="text-center text-gray-500">No project data available yet. Please populate src/data/projects.js.</p>
+            <p className="text-center text-gray-500 dark:text-gray-400">
+              No project data available. Please check your data source.
+            </p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={index}
-                  variants={cardVariants}
-                  className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300"
-                >
-                  {project.image && (
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  )}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech, i) => (
-                        <Badge
-                          key={i}
-                          text={tech}
-                          className="bg-indigo-50 text-indigo-600"
-                        />
-                      ))}
-                    </div>
-                    <div className="flex justify-between items-center mt-4">
-                      <a
-                        href={project.liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-indigo-600 hover:text-indigo-700 font-medium"
-                      >
-                        Live Demo
-                      </a>
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-600 hover:text-gray-700 font-medium"
-                      >
-                        View Code
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            // Use AnimatePresence and map filtered projects to the dedicated card
+            <AnimatePresence mode='wait'> 
+              {/* Force re-render of the grid when filter changes */}
+              <motion.div
+                key={filter} 
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={containerVariants}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                {filteredProjects.map((project) => (
+                  <motion.div
+                    key={project.id} // Use project.id for stable keys
+                    variants={cardVariants}
+                  >
+                    <ProjectCard project={project} /> 
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           )}
         </motion.div>
       </div>
