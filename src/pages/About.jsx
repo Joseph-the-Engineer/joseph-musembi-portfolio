@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Button from '../components/common/Button';
 
 // Image is in the /public/images/ folder
-const profileSrc = '/images/profile.jpg';
+const profileSrc = './images/profile.jpg';
 const About = ({ id }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
