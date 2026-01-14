@@ -20,11 +20,8 @@ import Contact from './pages/Contact.jsx';
 
 // Data Imports
 import experienceData from './data/experience.js';
-import projectsData from './data/projects.js';
+import { PROJECTS_DATA } from './data/projects.js'; // Fixed: Using curly braces for named export
 import skillsData from './data/skills.js';
-
-// NOTE: useScrollSpy is commented out until the hook is created, to prevent errors.
-// import useScrollSpy from './hooks/useScrollSpy.js'; 
 
 // Create theme context
 export const ThemeContext = createContext();
@@ -71,7 +68,7 @@ function App() {
     }
   }, [theme]);
 
-  // persist motion preference
+  // Persist motion preference
   useEffect(() => {
     try {
       localStorage.setItem('reduceMotion', reduceMotion ? 'true' : 'false');
@@ -133,7 +130,6 @@ function App() {
 
         <ScrollProgress />
         
-        {/* The Header/NavBar is fixed and uses the activeSection for visual feedback */}
         <Header 
           sections={sections} 
           activeSection={activeSection}
@@ -141,7 +137,6 @@ function App() {
           toggleTheme={toggleTheme}
         />
         
-        {/* The main content wrapper provides padding to account for the fixed header */}
         <motion.main
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -150,38 +145,32 @@ function App() {
           role="main"
           id="main"
         >
-          {/* About Section (Hero) */}
           <Section id="about" fullHeight gradient>
             <About id="about" />
           </Section>
 
-          {/* Experience Section */}
           <Section id="experience" dark>
             <Experience id="experience" data={experienceData} />
           </Section>
 
-          {/* Projects Section */}
           <Section id="projects" gradient>
-            <Projects id="projects" data={projectsData} />
+            {/* Updated to use the correct variable PROJECTS_DATA */}
+            <Projects id="projects" data={PROJECTS_DATA} />
           </Section>
 
-          {/* Skills Section */}
           <Section id="skills" dark>
             <Skills id="skills" data={skillsData} />
           </Section>
 
-          {/* Education Section */}
           <Section id="education" gradient>
             <Education id="education" />
           </Section>
 
-          {/* Contact Section */}
           <Section id="contact">
             <Contact id="contact" />
           </Section>
         </motion.main>
 
-        {/* Footer component */}
         <Footer />
       </div>
     </ThemeContext.Provider>
