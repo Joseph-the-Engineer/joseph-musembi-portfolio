@@ -88,10 +88,22 @@ const Header = ({ sections, activeSection, theme, toggleTheme }) => {
               )}
             </motion.button>
 
-            <button onClick={() => window.print()} className="px-3 py-1 text-sm rounded-md bg-indigo-600 text-white">Download Resume</button>
+            {/* UPDATED DOWNLOAD LINK */}
+            <a 
+              href="./joseph-musembi-cv.pdf" 
+              download="Joseph-Musembi-CV.pdf" 
+              className="px-3 py-1 text-sm rounded-md bg-indigo-600 text-white inline-block transition-transform hover:scale-105"
+            >
+              Download CV
+            </a>
 
-            <button onClick={toggleReduceMotion} className="p-2 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300" aria-pressed={reduceMotion} aria-label="Reduce motion">
-              {reduceMotion ? 'Reduced motion' : 'Motion on'}
+            <button 
+              onClick={toggleReduceMotion} 
+              className="p-2 text-xs rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300" 
+              aria-pressed={reduceMotion} 
+              aria-label="Reduce motion"
+            >
+              {reduceMotion ? 'Reduced' : 'Motion'}
             </button>
           </div>
         </nav>
@@ -147,6 +159,14 @@ const Header = ({ sections, activeSection, theme, toggleTheme }) => {
                   {sectionId}
                 </motion.a>
               ))}
+              {/* Mobile Download Link */}
+              <a 
+                href="./joseph-musembi-cv.pdf" 
+                download="Joseph-Musembi-CV.pdf" 
+                className="block text-center px-4 py-2 text-sm rounded-lg bg-indigo-600 text-white font-medium"
+              >
+                Download CV
+              </a>
             </div>
           </motion.div>
         )}

@@ -119,7 +119,7 @@ const Experience = ({ id, data }) => {
               <button onClick={() => setReduceMotion(prev => !prev)} className="px-3 py-1 bg-gray-100 rounded-md text-sm">
                 {reduceMotion ? 'Enable animations' : 'Reduce animations'}
               </button>
-              <button onClick={() => window.print()} className="px-3 py-1 bg-indigo-600 text-white rounded-md text-sm">Download Resume</button>
+              <a href="/joseph-musembi-cv.pdf" download="Joseph-Musembi-CV.pdf" className="px-3 py-1 bg-indigo-600 text-white rounded-md text-sm inline-block">Download CV</a>
             </div>
           </div>
 
