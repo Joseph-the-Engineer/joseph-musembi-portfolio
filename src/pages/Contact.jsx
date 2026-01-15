@@ -65,7 +65,7 @@ const Contact = ({ id }) => {
       // Verified IDs from your EmailJS Dashboard
       emailjs.sendForm(
         'service_ik2twje',    // Your Default Service ID
-        '7z7nav4',   // Your "Contact Us" Template ID
+        'template_7z7nav4',   // Your "Contact Us" Template ID
         form.current,        
         'K90C4pwCXDZLMYhpe'     // ACTION REQUIRED: Replace with your Public Key from Account tab
       )
