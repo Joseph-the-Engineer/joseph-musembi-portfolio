@@ -1,14 +1,20 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Button from '../components/common/Button';
 import emailjs from '@emailjs/browser';
 
 const Contact = ({ id }) => {
+  // Initialize EmailJS with your Public Key
+  // This ensures the SDK is ready to send before the user clicks submit
+  useEffect(() => {
+    emailjs.init("K90C4pwCXDZLMYhpe");
+  }, []);
+
   const form = useRef(); 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    title: '', // Updated from 'subject' to match your EmailJS template variable {{title}}
+    title: '', // Matches {{title}} in your EmailJS template
     message: ''
   });
   const [errors, setErrors] = useState({});
@@ -62,12 +68,12 @@ const Contact = ({ id }) => {
       setIsSubmitting(true);
       setSubmitStatus(null);
 
-      // Verified IDs from your EmailJS Dashboard
+      // Using your verified IDs from the screenshots
       emailjs.sendForm(
-        'service_ik2twje',    // Your Default Service ID
-        'template_f7nyxo7',   // Your "Contact Us" Template ID
-        form.current,        
-        'K90C4pwCXDZLMYhpe'     // ACTION REQUIRED: Replace with your Public Key from Account tab
+        'service_ik2twje',    // Service ID from image_7b4c87.png
+        'template_f7nyxo7',   // Template ID from image_7acc89.png
+        form.current,         
+        'K90C4pwCXDZLMYhpe'     // Public Key from image_7acd60.png
       )
       .then((result) => {
         setSubmitStatus('success');
