@@ -4,17 +4,16 @@ import Button from '../components/common/Button';
 import emailjs from '@emailjs/browser';
 
 const Contact = ({ id }) => {
-  // Initialize EmailJS with your Public Key
-  // This ensures the SDK is ready to send before the user clicks submit
+  // 1. Initialize EmailJS with your verified Public Key
   useEffect(() => {
-    emailjs.init("K90C4pwCXDZLMYhpe");
+    emailjs.init("K90C4pwCXDZLMYhpe"); // Verified from image_7acd60.png
   }, []);
 
   const form = useRef(); 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    title: '', // Matches {{title}} in your EmailJS template
+    title: '', // This matches {{title}} in your EmailJS template settings
     message: ''
   });
   const [errors, setErrors] = useState({});
@@ -68,7 +67,7 @@ const Contact = ({ id }) => {
       setIsSubmitting(true);
       setSubmitStatus(null);
 
-      // Using your verified IDs from the screenshots
+      // 2. Use your verified Service and Template IDs
       emailjs.sendForm(
         'service_ik2twje',    // Service ID from image_7b4c87.png
         'template_f7nyxo7',   // Template ID from image_7acc89.png
@@ -76,10 +75,11 @@ const Contact = ({ id }) => {
         'K90C4pwCXDZLMYhpe'     // Public Key from image_7acd60.png
       )
       .then((result) => {
+        console.log('SUCCESS!', result.status, result.text);
         setSubmitStatus('success');
         setFormData({ name: '', email: '', title: '', message: '' });
       }, (error) => {
-        console.error('EmailJS Error:', error);
+        console.error('FAILED...', error);
         setSubmitStatus('error');
       })
       .finally(() => {
@@ -175,7 +175,7 @@ const Contact = ({ id }) => {
                   <input
                     type="text"
                     id="name"
-                    name="name" 
+                    name="name" // Matches {{name}} in EmailJS
                     value={formData.name}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-lg border dark:bg-gray-900 dark:text-white ${
@@ -193,7 +193,7 @@ const Contact = ({ id }) => {
                   <input
                     type="email"
                     id="email"
-                    name="email"
+                    name="email" // Matches {{email}} in EmailJS
                     value={formData.email}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-lg border dark:bg-gray-900 dark:text-white ${
@@ -211,7 +211,7 @@ const Contact = ({ id }) => {
                   <input
                     type="text"
                     id="title"
-                    name="title" 
+                    name="title" // Matches {{title}} in EmailJS
                     value={formData.title}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
@@ -225,7 +225,7 @@ const Contact = ({ id }) => {
                   </label>
                   <textarea
                     id="message"
-                    name="message"
+                    name="message" // Matches {{message}} in EmailJS
                     value={formData.message}
                     onChange={handleChange}
                     rows="5"
