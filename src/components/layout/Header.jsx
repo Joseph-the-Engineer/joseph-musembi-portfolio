@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeContext } from '../../App.jsx';
 
-// Resolve profile image for header/logo using Vite base URL (works in dev and prod)
+// Resolve profile image and CV using Vite base URL
 const headerLogo = `${import.meta.env.BASE_URL}images/profile.jpg`;
+const cvPath = `${import.meta.env.BASE_URL}joseph-musembi-cv.pdf`;
 
 const Header = ({ sections, activeSection, theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,7 +44,6 @@ const Header = ({ sections, activeSection, theme, toggleTheme }) => {
           </span>
         </motion.div>
         
-        {/* Navigation Links */}
         {/* Desktop Navigation */}
         <nav aria-label="Primary" className="hidden md:flex items-center space-x-6">
           {sections.map(sectionId => (
@@ -88,13 +88,13 @@ const Header = ({ sections, activeSection, theme, toggleTheme }) => {
               )}
             </motion.button>
 
-            {/* UPDATED DOWNLOAD LINK */}
+            {/* FIXED DESKTOP DOWNLOAD LINK */}
             <a 
-              href="./joseph-musembi-cv.pdf" 
+              href={cvPath} 
               download="Joseph-Musembi-CV.pdf" 
-              className="px-3 py-1 text-sm rounded-md bg-indigo-600 text-white inline-block transition-transform hover:scale-105"
+              className="px-4 py-2 text-sm font-bold rounded-md bg-indigo-600 text-white transition-all hover:bg-indigo-700 active:scale-95"
             >
-              Download CV
+              Download Resume
             </a>
 
             <button 
@@ -115,15 +115,8 @@ const Header = ({ sections, activeSection, theme, toggleTheme }) => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
             aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-6 w-6" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {isMobileMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -154,18 +147,18 @@ const Header = ({ sections, activeSection, theme, toggleTheme }) => {
                       : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  whileHover={{ x: 5 }}
                 >
                   {sectionId}
                 </motion.a>
               ))}
-              {/* Mobile Download Link */}
+              
+              {/* FIXED MOBILE DOWNLOAD LINK */}
               <a 
-                href="./joseph-musembi-cv.pdf" 
+                href={cvPath} 
                 download="Joseph-Musembi-CV.pdf" 
-                className="block text-center px-4 py-2 text-sm rounded-lg bg-indigo-600 text-white font-medium"
+                className="block text-center px-4 py-2 text-sm rounded-lg bg-indigo-600 text-white font-bold"
               >
-                Download CV
+                Download Resume
               </a>
             </div>
           </motion.div>
