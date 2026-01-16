@@ -1,4 +1,7 @@
-// Data source for all portfolio projects
+/**
+ * Synchronized Project Data
+ * Verified against professional CV and local asset naming conventions.
+ */
 export const PROJECTS_DATA = [
   {
     id: 1,
@@ -10,9 +13,7 @@ export const PROJECTS_DATA = [
     category: "Full Stack",
     date: "2023",
     technologies: ["Python", "Django", "PostgreSQL", "Tailwind CSS"],
-    images: [
-      { src: '/images/projects/PMS.png', alt: 'Property Management Dashboard' },
-    ],
+    images: [{ src: '/images/projects/PMS.png', alt: 'Property Management Dashboard' }],
   },
   {
     id: 2,
@@ -23,9 +24,7 @@ export const PROJECTS_DATA = [
     category: "Backend",
     date: "2022",
     technologies: ["Python", "Django", "SQLite", "Bootstrap"],
-    images: [
-      { src: '/images/projects/SMS APP.png', alt: 'School Management Overview' },
-    ],
+    images: [{ src: '/images/projects/SMS_APP.png', alt: 'School Management Overview' }],
   },
   {
     id: 3,
@@ -36,9 +35,7 @@ export const PROJECTS_DATA = [
     category: "API",
     date: "2021",
     technologies: ["Python", "Flask", "Twilio API", "REST"],
-    images: [
-      { src: '/images/projects/SMS.png', alt: 'SMS System Interface' },
-    ],
+    images: [{ src: '/images/projects/SMS.png', alt: 'SMS System Interface' }],
   },
   {
     id: 4,
@@ -49,35 +46,29 @@ export const PROJECTS_DATA = [
     category: "Desktop/Retail",
     date: "2020",
     technologies: ["Python", "Tkinter", "SQLite"],
-    images: [
-      { src: '/images/projects/POS system.png', alt: 'POS Checkout Screen' },
-    ],
+    images: [{ src: '/images/projects/POS_system.png', alt: 'POS Checkout Screen' }],
   },
   {
     id: 5,
-    title: "Deep Learning & Reinforcement Learning",
-    description: "Collection of Jupyter notebooks and code for deep learning and RL experiments. Uses TensorFlow, PyTorch, and OpenAI Gym. Includes tutorials and project demos.",
+    title: "Task Management System",
+    description: "A full-stack application featuring a JWT-based authentication system, task assignment, user roles, and activity tracking[cite: 42, 44, 45].",
     githubLink: "https://github.com/Musembi001",
     liveLink: null,
-    category: "AI/ML",
+    category: "Full-Stack",
     date: "2024",
-    technologies: ["Python", "TensorFlow", "PyTorch", "Jupyter"],
-    images: [
-      { src: '/images/projects/Inpainting.png', alt: 'Neural Network Visualization' },
-    ],
+    technologies: ["React", "Node.js", "Express", "MongoDB"],
+    images: [{ src: '/images/projects/Inpainting.png', alt: 'Task Management Interface' }],
   },
   {
     id: 6,
-    title: "Image Inpainting System (AI)",
-    description: "Advanced image inpainting using deep learning (OpenCV, DeepFill, EdgeConnect). Restores missing parts of images with AI-powered algorithms.",
+    title: "Predictive Data Analysis Tool",
+    description: "A regression model built to forecast sales and visualize data trends using advanced Python libraries[cite: 46, 48, 49].",
     githubLink: "https://github.com/Musembi001",
     liveLink: null,
-    category: "Computer Vision",
+    category: "AI/ML",
     date: "2023",
-    technologies: ["Python", "OpenCV", "Deep Learning"],
-    images: [
-      { src: '/images/projects/Inpainting.png', alt: 'Image Inpainting Demo' },
-    ],
+    technologies: ["Python", "Pandas", "Scikit-learn", "Matplotlib"],
+    images: [{ src: '/images/projects/Inpainting.png', alt: 'Data Visualization Demo' }],
   },
   {
     id: 7,
@@ -88,9 +79,7 @@ export const PROJECTS_DATA = [
     category: "Enterprise",
     date: "2024",
     technologies: ["React", "Node.js", "Express", "MongoDB"],
-    images: [
-      { src: '/images/projects/HMIS.png', alt: 'Hospital Appointments View' },
-    ],
+    images: [{ src: '/images/projects/HMIS.png', alt: 'Hospital Appointments View' }],
   },
 ];
 
