@@ -1,3 +1,4 @@
+// Data source for all portfolio projects
 export const PROJECTS_DATA = [
   {
     id: 1,
@@ -10,7 +11,7 @@ export const PROJECTS_DATA = [
     date: "2023",
     technologies: ["Python", "Django", "PostgreSQL", "Tailwind CSS"],
     images: [
-      { src: 'https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'Property Management Dashboard' },
+      { src: '/images/projects/PMS.png', alt: 'Property Management Dashboard' },
     ],
   },
   {
@@ -23,7 +24,7 @@ export const PROJECTS_DATA = [
     date: "2022",
     technologies: ["Python", "Django", "SQLite", "Bootstrap"],
     images: [
-      { src: 'https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'School Management Overview' },
+      { src: '/images/projects/SMS APP.png', alt: 'School Management Overview' },
     ],
   },
   {
@@ -36,7 +37,7 @@ export const PROJECTS_DATA = [
     date: "2021",
     technologies: ["Python", "Flask", "Twilio API", "REST"],
     images: [
-      { src: 'https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'SMS System Interface' },
+      { src: '/images/projects/SMS.png', alt: 'SMS System Interface' },
     ],
   },
   {
@@ -49,7 +50,7 @@ export const PROJECTS_DATA = [
     date: "2020",
     technologies: ["Python", "Tkinter", "SQLite"],
     images: [
-      { src: 'https://images.pexels.com/photos/265072/pexels-photo-265072.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'POS Checkout Screen' },
+      { src: '/images/projects/POS system.png', alt: 'POS Checkout Screen' },
     ],
   },
   {
@@ -62,7 +63,7 @@ export const PROJECTS_DATA = [
     date: "2024",
     technologies: ["Python", "TensorFlow", "PyTorch", "Jupyter"],
     images: [
-      { src: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'Neural Network Visualization' },
+      { src: '/images/projects/Inpainting.png', alt: 'Neural Network Visualization' },
     ],
   },
   {
@@ -75,7 +76,7 @@ export const PROJECTS_DATA = [
     date: "2023",
     technologies: ["Python", "OpenCV", "Deep Learning"],
     images: [
-      { src: 'https://images.pexels.com/photos/17483874/pexels-photo-17483874/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-depicts-a-look-inside-the-complexity-of-an-ai-model-it-was-created-by-google-deepmind.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'Computer Vision Demo' },
+      { src: '/images/projects/Inpainting.png', alt: 'Image Inpainting Demo' },
     ],
   },
   {
@@ -88,7 +89,7 @@ export const PROJECTS_DATA = [
     date: "2024",
     technologies: ["React", "Node.js", "Express", "MongoDB"],
     images: [
-      { src: 'https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'Hospital Appointments View' },
+      { src: '/images/projects/HMIS.png', alt: 'Hospital Appointments View' },
     ],
   },
 ];
