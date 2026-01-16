@@ -5,16 +5,16 @@
   "type": "module",
   "homepage": "https://joseph-the-engineer.github.io/joseph-musembi-portfolio/",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0 || true",
-    "format": "prettier --write \"**/*.{js,jsx,json,css,md}\"",
-    "preview": "vite preview",
-    "test": "vitest --run || true",
-    "check": "npm run lint || true && npm run test || true"
-  },
+  "dev": "vite",
+  "build": "vite build",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist",
+  "lint": "eslint . --report-unused-disable-directives --max-warnings 0 || true",
+  "format": "prettier --write \"**/*.{js,jsx,json,css,md}\"",
+  "preview": "vite preview",
+  "test": "vitest --run || true",
+  "check": "npm run lint || true && npm run test || true"
+},
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "framer-motion": "^10.16.4",
