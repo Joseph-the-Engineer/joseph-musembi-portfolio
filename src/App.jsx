@@ -23,6 +23,9 @@ import experienceData from './data/experience.js';
 import { PROJECTS_DATA } from './data/projects.js'; // Fixed: Using curly braces for named export
 import skillsData from './data/skills.js';
 
+
+
+
 // Create theme context
 export const ThemeContext = createContext();
 

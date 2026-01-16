@@ -6,44 +6,54 @@ import Button from './common/Button';
 const ProjectCard = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  // Safely extract the first image source from the images array
+  const imageSrc = project.images && project.images.length > 0 
+    ? project.images[0].src 
+    : '';
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+      className="relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full flex flex-col"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Project Image */}
-      <div className="relative h-48 overflow-hidden">
+      {/* Project Image Section */}
+      <div className="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
         <motion.img
-          src={project.image}
+          src={imageSrc}
           alt={project.title}
           className="w-full h-full object-cover"
           animate={{ scale: isHovered ? 1.1 : 1 }}
           transition={{ duration: 0.3 }}
+          // Fallback if image fails to load
+          onError={(e) => { e.target.src = 'https://via.placeholder.com/400x200?text=Image+Not+Found'; }}
         />
+        
         <AnimatePresence>
           {isHovered && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+              className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-4"
             >
-              <div className="absolute bottom-4 left-4 right-4 flex gap-2">
-                <Button
-                  href={project.liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="primary"
-                  size="sm"
-                  className="flex-1"
-                >
-                  Live Demo
-                </Button>
+              <div className="flex gap-2 w-full">
+                {project.liveLink && (
+                  <Button
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="primary"
+                    size="sm"
+                    className="flex-1"
+                  >
+                    Live Demo
+                  </Button>
+                )}
                 <Button
                   href={project.githubLink}
                   target="_blank"
@@ -60,46 +70,46 @@ const ProjectCard = ({ project }) => {
         </AnimatePresence>
       </div>
 
-      {/* Project Info */}
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+      {/* Project Info Section */}
+      <div className="p-6 flex-1 flex flex-col">
+        <div className="flex items-start justify-between mb-3 gap-2">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">
             {project.title}
           </h3>
           {project.featured && (
             <Badge
               text="Featured"
-              className="bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300"
+              className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 flex-shrink-0"
             />
           )}
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 mb-4">
+        <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm line-clamp-3">
           {project.description}
         </p>
 
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        {/* Technologies - Pushes the footer to the bottom */}
+        <div className="flex flex-wrap gap-2 mb-6 mt-auto">
           {project.technologies.map((tech, index) => (
             <Badge
               key={index}
               text={tech}
-              className="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+              className="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-xs"
             />
           ))}
         </div>
 
-        {/* Project Stats */}
-        <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 pt-4 border-t border-gray-100 dark:border-gray-700">
+        {/* Project Footer Stats */}
+        <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 pt-4 border-t border-gray-100 dark:border-gray-700">
           <div className="flex items-center space-x-2">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
             <span>{project.date}</span>
           </div>
           {project.category && (
             <span className="flex items-center space-x-1">
-              <span className="w-2 h-2 rounded-full bg-primary-500"></span>
+              <span className="w-2 h-2 rounded-full bg-blue-500"></span>
               <span>{project.category}</span>
             </span>
           )}
