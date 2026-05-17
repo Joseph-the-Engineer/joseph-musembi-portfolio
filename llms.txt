@@ -1,0 +1,15 @@
+# Joseph Musembi — Full Stack Developer & Software Engineer
+
+> Portfolio and professional background of Joseph Musembi, specializing in scalable web applications, modern JavaScript frameworks, and cloud technologies.
+
+## Contact & Links
+- Live Website: https://Joseph-the-Engineer.github.io/joseph-musembi-portfolio/
+- GitHub Profile: https://github.com/Joseph-the-Engineer
+
+## Core Expertise
+- **Experience:** 5+ years in full-stack web development.
+- **Frontend:** React, JavaScript (ES6+), Tailwind CSS, Responsive Web Design.
+- **Backend & Cloud:** Scalable server architecture, robust API design, and cloud deployments.
+
+## Key Projects
+Detailed engineering blueprints, implementations, and source code are available natively within this repository structure under `/src/components` and `/src/pages`.
