@@ -65,10 +65,14 @@ const About = ({ id }) => {
             variants={itemVariants}
             className="space-y-6"
           >
-            <h2 className="text-4xl font-bold text-gray-900">
-              Crafting Digital Excellence Through Code
-            </h2>
+            <h1 className="text-5xl font-bold text-gray-900">
+              Joseph Musembi — Full Stack Developer & Software Engineer
+            </h1>
             
+            <p className="text-2xl font-semibold text-indigo-600">
+              Building scalable web applications, modern JavaScript experiences, and cloud-native solutions.
+            </p>
+
             <p className="text-xl text-gray-600 leading-relaxed">
               A passionate Full Stack Developer with expertise in building scalable web applications
               and solving complex technical challenges. Specializing in modern JavaScript frameworks
